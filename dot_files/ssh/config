@@ -1,5 +1,7 @@
 Host github.com
+    User seanochoa
     StrictHostKeyChecking no
+    IdentityFile ~/.ssh/HomeDir.id_rsa
 Host target
     User bitcycle
     StrictHostKeyChecking no
