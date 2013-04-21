@@ -9,7 +9,7 @@
 	url = git://github.com/scrooloose/nerdtree.git
 [submodule "dot_files/vim/bundle/togglemouse"]
 	path = dot_files/vim/bundle/togglemouse
-	url = git://github.com/nvie/vim-togglemouse.git
+	url = git://github.com/seanochoa/vim-togglemouse.git
 [submodule "dot_files/vim/bundle/sudo"]
 	path = dot_files/vim/bundle/sudo
 	url = git://github.com/seanochoa/sudo.vim.git
