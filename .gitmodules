@@ -19,3 +19,6 @@
 [submodule "dot_files/vim/bundle/autotags"]
 	path = dot_files/vim/bundle/autotags
 	url = git://github.com/vim-scripts/autotags.git
+[submodule "downloads/astyle"]
+	path = downloads/astyle
+	url = git@github.com:seanochoa/astyle-mirror.git
