@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/bitcycle/git/sorted/cpp/sort'
+let g:netrw_dirhist_2='/home/bitcycle/git/home/dot_files/vim/bundle/pastie'
+let g:netrw_dirhist_3='/home/bitcycle/git/home/dot_files/vim'
+let g:netrw_dirhist_4='/home/bitcycle/git/gtc_admin'

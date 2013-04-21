@@ -1,0 +1,272 @@
+
+call pathogen#helptags()
+call pathogen#infect()
+
+" Conform to PSPIncs source formattingules
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Search settings
+set nohlsearch      "Don't highlight searches
+set ignorecase      "for pattern matching
+set smartcase       "if I use uppercase, match case sensitive
+set incsearch       "show us matches immediately
+
+" Code recognition
+syntax on
+set number
+set tags=tags;/
+
+" Colors
+colorscheme railscasts
+
+" Misc stuff
+set nobackup
+set nowritebackup
+set noswapfile
+set nowrap
+set exrc                        "Make sure we run the vimrc
+set secure                      "don't allow command line executing in vimrc
+set nocompatible                "all vim features!
+set showcmd                     "show commands in status line
+set confirm                     "Prompt on errors
+set visualbell t_vb=            "Don't ring any bells
+set title                       "Let VIM manage the term title
+set titlestring=%t\ %y\ %r\ %m  "Set a useful term title
+set hidden                      "Better buffer management
+set encoding=utf-8              "Use UTF-8 as standard encoding
+scriptencoding utf-8
+set backspace=indent,eol,start  "Make backspace more flexible
+set ruler                       "Always show current positions along the bottom
+set formatoptions=torc          "Do some neat comment stuff for us
+set whichwrap+=<,>
+set hid
+set ruler
+set backspace=eol,start,indent
+set magic
+set noerrorbells
+set novisualbell
+set nowb
+set wildmenu
+set cmdheight=1
+set report=0 " tell us when anything is changed via :...
+set showmatch
+set incsearch
+set showcmd
+set ttymouse=xterm
+set pastetoggle=<F6>
+
+let mapleader = ","
+
+nmap <Leader>e :e ~/.vimrc<cr>
+nmap <Leader>p\| :vsp<cr>
+nmap <Leader>p_ :sp<cr>
+nmap <Leader>s :update<cr>
+nmap <Leader>w<Right> <c-w><Right>
+nmap <Leader>w<Left> <c-w><Left>
+nmap <Leader>w<Down> <c-w><Down>
+nmap <Leader>w<Up> <c-w><Up>
+nmap <Leader>bj :bnext<cr>
+nmap <Leader>bk :bprev<cr>
+nmap <Leader>b :ls<cr>:b 
+nmap <Leader>bx :bd<cr>
+nmap <Leader>x :q<cr>
+nnoremap <Leader>q @q
+nmap <F5> :! !<cr>
+nnoremap <leader>t :TlistToggle<CR>
+
+inoremap <Leader>s <Esc>:w<cr>
+inoremap JJ <Esc>
+inoremap Jj <Esc>
+inoremap jj <Esc>
+inoremap jk <Esc>
+imap <ESC> <NOP>
+map <silent> <cr> :noh<cr>
+autocmd! bufwritepost .vimrc source ~/.vimrc
+
+" Navigation Changes
+noremap l h
+noremap ; l
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+
+" If you like long lines with line wrapping enabled, this solves the problem
+" that pressing down jumpes your cursor “over” the current line to the next
+" line. It changes behaviour so that it jumps to the next row in the editor
+" (much more natural)
+nnoremap j gj
+nnoremap k gk
+
+
+" Finally, a trick by Steve Losh for when you forgot to sudo before editing a
+" file that requires root privileges (typically /etc/hosts). This lets you use
+" w!! to do that after you opened the file already:
+cmap w!! w !sudo tee % >/dev/null
+
+" Fold Tag
+nnoremap <leader>ft Vatzf
+
+
+""""""""""""""""""""""""""""""
+" => Statusline
+""""""""""""""""""""""""""""""
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=gray guifg=white
+
+set laststatus=2
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+
+function! CurDir()
+let curdir = substitute(getcwd(), '/home/sochoa', "~/", "g")
+return curdir
+endfunction
+
+function! HasPaste()
+if &paste
+    return 'PASTE MODE  '
+else
+    return ''
+endif
+endfunction
+
+autocmd FileType htm set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+
+set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+set errorformat=%f:%l:\ %m
+
+set hidden
+set switchbuf+=useopen
+
+
+" Color switching
+nnoremap <f4> :exec "colorscheme ".substitute(substitute(expand($VIMRUNTIME."/colors/*.vim"), "'.*[/\\]'.colors_name.'\.vim\c[[:cntrl:]]*[^[:cntrl:]]*[/\\]\([^.]*\).*', "'\1', 'g'),"'[^[:cntrl:]]*[/\\]\([^.]*\).vim\c.*','\1','')<cr><cr>
+
+" ================================================================================
+" Code Folding
+
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+nmap <F10> zR
+vnoremap <Space> zf
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+set foldmethod=manual
+
+" ===============================================================================
+" Automatically exit insert mode.
+au InsertEnter * let updaterestore=&updatetime | set updatetime=4000
+au InsertLeave * let &updatetime=updaterestore
+au CursorHoldI * stopinsert
+
+nmap <silent> <C-D> :NERDTreeToggle<CR>
+inoremap <silent> <C-D> <ESC>:NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.swp']
+let NERDTreeIgnore += ['\.pyc']
+function! StartUp()
+    if 0 == argc()
+        NERDTree
+    end
+endfunction
+let NERDTreeQuitOnOpen = 1
+autocmd VimEnter * call StartUp()
+let g:NERDTreeMapHelp = "<F1>"
+let g:NERDTreeDirArrows=0
+
+
+" ==============================================================================
+" Neocomplcache settings
+
+" Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
+let g:acp_enableAtStartup = 0
+" Launches neocomplcache automatically on vim startup.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underscore completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Sets minimum char length of syntax keyword.
+let g:neocomplcache_min_syntax_length = 3
+" buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder 
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Define file-type dependent dictionaries.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
+
+" Define keyword, for minor languages
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" AutoComplPop like behavior.
+"let g:neocomplcache_enable_auto_select = 1
+
+" Enable omni completion. Not required if they are already set elsewhere in .vimrc
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion, which require computational power and may stall the vim. 
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+
+" ==================================================================
+" Notifying of active window
+
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cul
+    autocmd WinLeave * set nocul
+augroup END
+
+if !has("gui_running") | let g:skip_loading_mswin = 1 | endif
+if has("gui_running") | colorscheme desert | endif
+

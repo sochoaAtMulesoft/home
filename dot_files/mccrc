@@ -1,0 +1,3 @@
+#!/bin/bash
+
+export MCC_SRC=$HOME/git/mcc

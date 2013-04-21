@@ -1,0 +1,6 @@
+\set HISTCONTROL ignoredups
+\pset null 'NULL'
+\timing
+\set HISTFILE ~/.psql_history- :HOST - :DBNAME
+\set HISTSIZE 2000
+\set PROMPT1 '%n@%M:% [%/] %x%#'
