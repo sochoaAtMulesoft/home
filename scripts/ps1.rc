@@ -34,7 +34,7 @@ function prompt_command () {
     else
         LAST_CMD_ALERT="$last_command_return_code"
     fi
-    PS1="${TMUX}"
+    PS1="\n${TMUX}"
     PS1+="${LIGHT_BLUE}\u${RESET} "
     PS1+="${LIGHT_GREEN}\h${RESET}\n"
     PS1+="  => \w\n"
