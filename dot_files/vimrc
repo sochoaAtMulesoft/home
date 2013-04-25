@@ -271,4 +271,6 @@ if !has("gui_running") | let g:skip_loading_mswin = 1 | endif
 if has("gui_running") | colorscheme desert | endif
 
 set tags=./ctags.db;
+let g:tagbar_usearrows = 1
 noremap <leader>t :TagbarToggle<CR>
+noremap <leader>td <C-]>

@@ -1,7 +1,12 @@
 Host github.com
     StrictHostKeyChecking no
-Host 192.168.235.151
+Host target
     User bitcycle
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/HomeDir.id_rsa
+Host deploy
+    User bitcycle
+    StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
 Host 10.4.0.15 
     User itc
