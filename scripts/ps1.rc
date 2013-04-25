@@ -28,7 +28,7 @@ function prompt_command () {
     script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     load="$(/bin/bash "$script_dir/load.ps1.rc" 2>/dev/null)"
 
-    PS1="\n${TMUX}"
+    PS1=""
     PS1+="${LIGHT_BLUE}\u${RESET} "
     PS1+="${LIGHT_GREEN}\h${RESET}\n"
     PS1+="  => \w\n"
