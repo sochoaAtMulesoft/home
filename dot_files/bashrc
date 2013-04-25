@@ -1,5 +1,8 @@
 #!/bin/bash
 
+bind '"\eOC":forward-word'
+bind '"\eOD":backward-word'
+
 export TZ=America/Los_Angeles
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8

@@ -1,39 +1,41 @@
-#PS1="$COLOR_OFF"
-#PS1="$PS1[\D{%m/%d %H:%M}] "
-#PS1="$PS1$GREEN_BOLD\u "
-#PS1="$PS1$COLOR_OFF"
-#PS1="$PS1$WHITE@ "
-#PS1="$PS1$GREEN_BOLD\h "
-#PS1="$PS1$BLUE_BOLD\w "
-##PS1="$PS1$PURPLE$(__git_ps1 "[git:%s] ")"
-##PS1="$PS1$PURPLE$(__git_ps1)"
-#PS1="$PS1$COLOR_OFF\$ "
 
 export GIT_PS1_SHOWDIRTYSTATE=1
+
 function prompt_command () {
-    last_command_return_code=$?
-    last_command="$(fc -nl -1 | sed 's/^\s*//g' | sed 's/\s*$//g')"
+    local last_command_return_code=$?
+    local last_command="$(fc -nl -1 | sed 's/^\s*//g' | sed 's/\s*$//g')"
+
     local LIGHT_BLUE="\[\033[1;34m\]"
     local LIGHT_GREEN="\[\033[1;32m\]"
     local LIGHT_YELLOW="\[\033[1;33m\]"
     local LIGHT_RED="\[\033[1;31m\]"
     local WHITE="\[\033[1;37m\]"
     local RESET="\[\033[0m\]"
-    local USER="${LIGHT_BLUE}\u${RESET}"
+
+    local USER=""
     local TMUX=""
     local HOST=""
-    if [[ $TERM != "screen-256color" ]]; then
-        TMUX="${LIGHT_YELLOW}(no tmux)${RESET} "
-        HOST="@${LIGHT_GREEN}\h${RESET}"
-    else
-        HOST=""
-    fi
-    local RC=""
-    if [[ "$last_command_return_code" != "0" ]]; then
-        RC="${LIGHT_RED}"'"${last_command}"'" exited with return code $last_command_return_code${RESET}\n"
-    fi
 
-    PS1="\n${RC}${USER}${HOST}:\W $(__git_ps1 "[git:%s] ")${TMUX}$ "
-    echo>/dev/null
+    if [[ $TERM != "screen-256color" ]]; then
+        TMUX="${LIGHT_YELLOW}(tmux not running)${RESET}\n"
+    fi
+    local LAST_CMD_ALERT=""
+    if [[ "$last_command_return_code" != "0" ]]; then
+        LAST_CMD_ALERT="${LIGHT_RED}$last_command_return_code${RESET}"
+    else
+        LAST_CMD_ALERT="$last_command_return_code"
+    fi
+    script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    load="$(/bin/bash "$script_dir/load.ps1.rc" 2>/dev/null)"
+
+    PS1="\n${TMUX}"
+    PS1+="${LIGHT_BLUE}\u${RESET} "
+    PS1+="${LIGHT_GREEN}\h${RESET}\n"
+    PS1+="  => \w\n"
+    PS1+="  last=${LAST_CMD_ALERT}, load=$load" 
+    PS1+="$(__git_ps1 "\n  git:%s ")$ "
+
+    echo -en &>/dev/null
 }
+
 export PROMPT_COMMAND="prompt_command"
