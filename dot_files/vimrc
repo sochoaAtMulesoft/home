@@ -270,3 +270,6 @@ augroup END
 if !has("gui_running") | let g:skip_loading_mswin = 1 | endif
 if has("gui_running") | colorscheme desert | endif
 
+set tags=./ctags.db;/
+noremap <leader>td 
+noremap <leader>tb <C-t>

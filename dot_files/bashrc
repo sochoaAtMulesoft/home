@@ -83,6 +83,7 @@ fi
 [ -d $HOME/opt/bin ] && [[ "$PATH" != *"$HOME/opt/bin"* ]] && export PATH="$HOME/opt/bin:$PATH"
 
 vim=$(which vim)
+alias vps1="vim $HOME/git/home/scripts/ps1.rc"
 export VISUAL=$vim
 export EDITOR=$vim
 export PSQL_EDITOR=$vim

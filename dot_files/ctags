@@ -1,3 +1,7 @@
+--c++-kinds=+p
+--fields=+iaS
+--extra=+q
+
 --languages=PHP,JavaScript,Python,Java
 --totals=yes
 --tag-relative=yes
