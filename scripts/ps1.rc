@@ -1,15 +1,6 @@
-#PS1="$COLOR_OFF"
-#PS1="$PS1[\D{%m/%d %H:%M}] "
-#PS1="$PS1$GREEN_BOLD\u "
-#PS1="$PS1$COLOR_OFF"
-#PS1="$PS1$WHITE@ "
-#PS1="$PS1$GREEN_BOLD\h "
-#PS1="$PS1$BLUE_BOLD\w "
-##PS1="$PS1$PURPLE$(__git_ps1 "[git:%s] ")"
-##PS1="$PS1$PURPLE$(__git_ps1)"
-#PS1="$PS1$COLOR_OFF\$ "
 
 export GIT_PS1_SHOWDIRTYSTATE=1
+
 function prompt_command () {
     local last_command_return_code=$?
     local last_command="$(fc -nl -1 | sed 's/^\s*//g' | sed 's/\s*$//g')"
@@ -30,17 +21,21 @@ function prompt_command () {
     fi
     local LAST_CMD_ALERT=""
     if [[ "$last_command_return_code" != "0" ]]; then
-        LAST_CMD_ALERT="${LIGHT_RED}$last_command_return_code)${RESET}"
+        LAST_CMD_ALERT="${LIGHT_RED}$last_command_return_code${RESET}"
     else
         LAST_CMD_ALERT="$last_command_return_code"
     fi
+    script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    load="$(/bin/bash "$script_dir/load.ps1.rc" 2>/dev/null)"
+
     PS1="\n${TMUX}"
     PS1+="${LIGHT_BLUE}\u${RESET} "
     PS1+="${LIGHT_GREEN}\h${RESET}\n"
     PS1+="  => \w\n"
-    load=$(bash load.ps1.rc)
     PS1+="  last=${LAST_CMD_ALERT}, load=$load" 
     PS1+="$(__git_ps1 "\n  git:%s ")$ "
-    echo>/dev/null
+
+    echo -en &>/dev/null
 }
+
 export PROMPT_COMMAND="prompt_command"
