@@ -36,18 +36,6 @@ export LESS=-Ri
 
 # some more ls aliases
 
-function _ls() {
-    echo -en '\n  '
-    pwd 
-    echo -en '\n'  
-    \ls -F --color=always $@ 
-}
-function cd() { 
-    builtin cd "$1" 
-    _ls
-    echo
-}
-alias ls="_ls"
 alias sl="ls"
 alias ll='ls -l'
 alias la='ls -A'
@@ -99,5 +87,5 @@ alias tl="tmux ls 2>/dev/null || echo 'No sessions available'"
 # work-specific configurations
 [ -f $HOME/.mccrc ] && source $HOME/.mccrc
 
-#[[ -d $HOME/.rvm/bin ]] && export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -d $HOME/.rvm/bin ]] && export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
