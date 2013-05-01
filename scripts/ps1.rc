@@ -2,6 +2,7 @@
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 function prompt_command () {
+    history -a
     local last_command_return_code=$?
     local last_command="$(fc -nl -1 | sed 's/^\s*//g' | sed 's/\s*$//g')"
 

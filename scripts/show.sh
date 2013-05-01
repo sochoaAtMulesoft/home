@@ -1,15 +1,18 @@
 #!/bin/bash
 
+echo
 case $1 in 
     python)
-        if ! which pip &>/dev/null ; then
-            echo "PIP not installed."
+        if ! which pythonbrew &>/dev/null ; then
+            echo "pythonbrew not installed."
             exit 1
         fi
-        if ! which virtualenv &>/dev/null ; then
-            echo "Virtualenv not installed."
-            exit 1
-        fi        
+        if which pythonbrew &>/dev/null ; then 
+            pythonbrew list 
+        else
+            version="$(python -c 'import sys; sys.stdout.write(str(sys.version[:5]));')"
+            echo "System:  $(which python) $version"
+        fi
         ;;
     ruby)
         if ! which ruby &>/dev/null ; then

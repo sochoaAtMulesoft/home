@@ -87,5 +87,7 @@ alias tl="tmux ls 2>/dev/null || echo 'No sessions available'"
 # work-specific configurations
 [ -f $HOME/.mccrc ] && source $HOME/.mccrc
 
+
 [[ -d $HOME/.rvm/bin ]] && export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
