@@ -1,9 +1,13 @@
-Host 127.0.0.1
+Host localhost
     User bitcycle
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
 Host github.com
     User seanochoa
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/HomeDir.id_rsa
+Host dev
+    User bitcycle
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
 Host target

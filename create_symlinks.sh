@@ -15,4 +15,15 @@ if [[ -f "$HOME/.pgpass" ]]; then
     chmod 0600 "$HOME/.pgpass"
 fi
 
+# update the gid/uid for all home files
+uid=$(id | ack -o "uid=\d+" | tr -d 'uid=')
+gid=$(id | ack -o "gid=\d+" | tr -d 'gid=')
+chown $uid:$gid -R $HOME
+
+chmod g-w -R $HOME 
+chmod 0700 $HOME/.ssh
+chmod 0600 $HOME/.ssh/authorized_keys
+chmod 0600 $HOME/.ssh/*.id_rsa
+chmod 0644 $HOME/.ssh/*.id_rsa.pub
+
 git submodule update --init --recursive
