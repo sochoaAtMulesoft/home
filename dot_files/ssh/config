@@ -1,3 +1,7 @@
+Host 127.0.0.1
+    User bitcycle
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/HomeDir.id_rsa
 Host github.com
     User seanochoa
     StrictHostKeyChecking no
@@ -10,10 +14,10 @@ Host deploy
     User bitcycle
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
-Host 10.4.0.15 
+Host mcc.git
     User itc
-    IdentityFile ~/.ssh/MeteorComm.id_rsa
     StrictHostKeyChecking no
+    IdentityFile ~/.ssh/MeteorComm.id_rsa
 Host bitbucket.org 
     User git 
     IdentityFile ~/.ssh/HomeDir.id_rsa
