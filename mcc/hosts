@@ -1,6 +1,6 @@
-127.0.0.1       localhost dev
-::1             localhost dev
+127.0.0.1       localhost
+::1             localhost
 192.168.235.156 dev
-192.168.235.160 target
-192.168.235.152 deploy
+192.168.235.151 target
+192.168.235.150 deploy
 10.4.0.15       mcc.git
