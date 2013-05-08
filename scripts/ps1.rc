@@ -13,6 +13,7 @@ function prompt_command () {
     local LIGHT_YELLOW="\[\033[1;33m\]"
     local LIGHT_RED="\[\033[1;31m\]"
     local HOST_BLUE="\[\033[1;47m\]"
+    local HOST_MAGENTA="\[\033[1;45m\]"
     local WHITE="\[\033[1;37m\]"
     local RESET="\[\033[0m\]"
 
@@ -33,7 +34,7 @@ function prompt_command () {
     if [[ "$(hostname)" == *deploy* ]]; then
         HOST_COLOR="${HOST_BLUE}"
     elif [[ "$(hostname)" == *target* ]]; then
-        HOST_COLOR="${LIGHT_YELLOW}"
+        HOST_COLOR="${HOST_MAGENTA}"
     else
         HOST_COLOR="${LIGHT_GREEN}"
     fi;
