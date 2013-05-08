@@ -87,5 +87,5 @@ alias tl="tmux ls 2>/dev/null || echo 'No sessions available'"
 
 
 [[ -d $HOME/.rvm/bin ]] && export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" && rvm use ruby-1.9.2-p320  >/dev/null && rvm gemset use mcc_master >/dev/null # Load RVM into a shell session *as a function*
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc" && pythonbrew switch 2.6.6 >/dev/null && pythonbrew venv use mcc_master >/dev/null
