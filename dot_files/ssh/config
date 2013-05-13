@@ -6,6 +6,10 @@ Host github.com
     User seanochoa
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
+Host build
+    User bitcycle
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/HomeDir.id_rsa
 Host dev
     User bitcycle
     StrictHostKeyChecking no
