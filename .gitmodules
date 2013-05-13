@@ -19,3 +19,6 @@
 [submodule "dot_files/vim/bundle/tagbar"]
 	path = dot_files/vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
+[submodule "dot_files/vim/bundle/tcomment"]
+	path = dot_files/vim/bundle/tcomment
+	url = https://github.com/vim-scripts/tComment.git
