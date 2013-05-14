@@ -22,3 +22,6 @@
 [submodule "dot_files/vim/bundle/tcomment"]
 	path = dot_files/vim/bundle/tcomment
 	url = https://github.com/vim-scripts/tComment.git
+[submodule "dot_files/vim/bundle/commandt"]
+	path = dot_files/vim/bundle/commandt
+	url = https://github.com/wincent/Command-T
