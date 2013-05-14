@@ -18,6 +18,7 @@ syntax on
 set number
 set tags=tags;/
 autocmd VimEnter * nested :TagbarOpen
+nmap <F3> :CtrlP<CR>
 
 " Colors
 colorscheme railscasts
