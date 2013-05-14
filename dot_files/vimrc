@@ -77,6 +77,7 @@ nmap <Leader>x :q<cr>
 nnoremap <Leader>q @q
 nmap <F5> :! !<cr>
 nnoremap <leader>t :TlistToggle<CR>
+nnoremap <leader>o :CommandT<CR>
 
 inoremap <Leader>s <Esc>:w<cr>
 inoremap JJ <Esc>
