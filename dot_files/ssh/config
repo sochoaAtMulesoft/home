@@ -2,6 +2,10 @@ Host localhost
     User bitcycle
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
+Host sde
+    User bitcycle
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/HomeDir.id_rsa
 Host github.com
     User seanochoa
     StrictHostKeyChecking no
