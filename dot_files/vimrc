@@ -178,12 +178,12 @@ nmap <silent> <C-D> :NERDTreeToggle<CR>
 inoremap <silent> <C-D> <ESC>:NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.swp']
 let NERDTreeIgnore += ['\.pyc']
+let g:NERDTreeWinSize = 50 
 function! StartUp()
     if 0 == argc()
         NERDTree
     end
 endfunction
-let NERDTreeQuitOnOpen = 1
 autocmd VimEnter * call StartUp()
 let g:NERDTreeMapHelp = "<F1>"
 let g:NERDTreeDirArrows=0
@@ -274,5 +274,6 @@ if !has("gui_running") | let g:skip_loading_mswin = 1 | endif
 if has("gui_running") | colorscheme desert | endif
 
 let g:tagbar_usearrows = 1
-noremap <leader>t :TagbarToggle<CR>
+let g:tagbar_width = 50
+noremap <F4> :TagbarToggle<CR>
 noremap <leader>td <C-]>
