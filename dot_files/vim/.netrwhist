@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/bitcycle/git/todos/ToDoList/pages/home'
-let g:netrw_dirhist_2='/home/bitcycle/git/SdeInterview/scripts'
-let g:netrw_dirhist_3='/home/bitcycle/git/SdeInterview/SdeInterview'
+let g:netrw_dirhist_2='/home/bitcycle/git/mcc/itc-deployment-tool/deployment/lib/deploy2/common'
+let g:netrw_dirhist_3='/home/bitcycle/git/mcc/itc-deployment-tool/deployment/lib/deploy2'
+let g:netrw_dirhist_4='/home/bitcycle/git/mcc/itc-deployment-tool/deployment/lib/deploy2/common'
+let g:netrw_dirhist_5='/home/bitcycle/topo/tmp'
+let g:netrw_dirhist_6='/home/bitcycle/git/mcc/itc-deployment-tool/deployment/lib/deploy2/templates'
