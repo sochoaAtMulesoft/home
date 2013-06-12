@@ -41,7 +41,7 @@ function prompt_command () {
 
     local WHICH_RUBY=""
     if [[ "$(which ruby)" != "/usr/bin/ruby" ]]; then 
-        WHICH_RUBY="$(rvm list | grep '^=' | sed 's/^\=\*\s*//g' | sed 's/\s.*$//g')"
+        WHICH_RUBY="[rvm:$(rvm list | grep '^=' | sed 's/^\=\*\s*//g' | sed 's/\s.*$//g')]\n"
     fi
 
     PS1="\n"
@@ -49,7 +49,7 @@ function prompt_command () {
     PS1+="[$(date +'%H:%M:%S')] "
     PS1+="[${LIGHT_BLUE}\u${RESET} ${HOST_COLOR}\h${RESET}] "
     PS1+="$(__git_ps1 "[git:%s] ")"
-    PS1+="[rvm:${WHICH_RUBY}]\n"
+    PS1+="${WHICH_RUBY}"
     PS1+="  => $(pwd)\n > "
 }
 
