@@ -39,16 +39,8 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -C'
 
-alias gl='git log --stat --pretty=full --graph --since=2.weeks'
-alias glf='git log --stat --pretty=full --graph'
-alias gd='git diff --color-words --ignore-space-at-eol'
-alias gc='git commit -a'
 alias gu='git submodule update --init --recursive'
-alias gs='git status'
-alias gb='git branch'
-alias gk='git checkout'
-alias gp='git push -v'
-alias gm='git merge -v --no-commit'
+alias sde='ssh bitcycle@sde-interview.com'
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 

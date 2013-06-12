@@ -28,3 +28,6 @@
 [submodule "dot_files/vim/bundle/ctrlp"]
 	path = dot_files/vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "dot_files/vim/bundle/django"]
+	path = dot_files/vim/bundle/django
+	url = https://github.com/vim-scripts/django.vim.git
