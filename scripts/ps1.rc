@@ -41,7 +41,13 @@ function prompt_command () {
 
     local WHICH_RUBY="\n"
     if [[ "$(which ruby)" != "/usr/bin/ruby" ]]; then 
-        WHICH_RUBY="[rvm:$(rvm list | grep '^=' | sed 's/^\=\*\s*//g' | sed 's/\s.*$//g')]${WHICH_RUBY}"
+        local gemset="$(rvm gemset list | grep '^=' | sed 's/^\=. //g' | sed 's/\s*$//g')"
+        local WHICH_GEMSET=""
+        if [[ "${gemset}" != "(default)" ]]; then 
+            WHICH_GEMSET=", gemset:${gemset}"
+        fi
+        
+        WHICH_RUBY="[rvm:$(rvm list | grep '^=' | sed 's/^\=\*\s*//g' | sed 's/\s.*$//g')${WHICH_GEMSET}]${WHICH_RUBY}"
     fi
 
     PS1="\n"
