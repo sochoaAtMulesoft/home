@@ -39,12 +39,17 @@ function prompt_command () {
         HOST_COLOR="${LIGHT_GREEN}"
     fi;
 
+    local WHICH_RUBY=""
+    if [[ "$(which ruby)" != "/usr/bin/ruby" ]]; then 
+        WHICH_RUBY="$(rvm list | grep '^=' | sed 's/^\=\*\s*//g' | sed 's/\s.*$//g')"
+    fi
+
     PS1="\n"
     PS1+="[rc: ${LAST_CMD_ALERT}] "
     PS1+="[$(date +'%H:%M:%S')] "
     PS1+="[${LIGHT_BLUE}\u${RESET} ${HOST_COLOR}\h${RESET}] "
-    PS1+="$(__git_ps1 "[git:%s]")\n"
-    # PS1+="\n"
+    PS1+="$(__git_ps1 "[git:%s] ")"
+    PS1+="[rvm:${WHICH_RUBY}]\n"
     PS1+="  => $(pwd)\n > "
 }
 
