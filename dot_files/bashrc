@@ -48,6 +48,7 @@ function _vs(){
     vim sudo:"$1"
 }
 alias vs='_vs'
+alias y='sudo yum'
 
 alias gu='git submodule update --init --recursive'
 alias sde='ssh bitcycle@sde-interview.com'
