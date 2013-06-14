@@ -29,6 +29,10 @@ source $HOME/git/home/scripts/ps1.rc
 alias reload="source $HOME/.bashrc"
 
 alias sudo="sudo "
+function _sudo(){
+    sudo $@
+}
+alias s="_sudo"
 export LESS=-Ri
 
 # some more ls aliases
@@ -38,6 +42,12 @@ alias sl="ls"
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -C'
+alias v='vim'
+
+function _vs(){
+    vim sudo:"$1"
+}
+alias vs='_vs'
 
 alias gu='git submodule update --init --recursive'
 alias sde='ssh bitcycle@sde-interview.com'

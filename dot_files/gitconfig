@@ -30,8 +30,6 @@
     co = checkout
     df = diff
     lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
     names = diff --name-only
 	show-upstream = !sh -c '\n\n    test -n \"$1\" || set -- HEAD\n    set -- \"$(git rev-parse --symbolic-full-name \"$1\")\"\n    git for-each-ref --format=\"%(upstream:short)\" \"$1\"\n\n\n' -
