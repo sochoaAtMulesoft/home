@@ -20,7 +20,7 @@ set tags=tags;/
 nmap <F3> :CtrlP<CR>
 
 " Colors
-colorscheme railscasts
+colorscheme solarized
 
 " Misc stuff
 set nobackup

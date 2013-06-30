@@ -37,8 +37,6 @@ export LESS=-Ri
 
 # some more ls aliases
 
-alias ls="ls --color -F"
-alias sl="ls"
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -C'
@@ -52,6 +50,7 @@ alias y='sudo yum'
 
 alias gu='git submodule update --init --recursive'
 alias sde='ssh bitcycle@sde-interview.com'
+alias mcc='ssh sochoa@192.168.17.159'
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 

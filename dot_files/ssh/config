@@ -10,7 +10,7 @@ Host github.com
     User seanochoa
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
-Host build
+Host build mcc
     User bitcycle
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa

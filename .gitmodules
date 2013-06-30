@@ -31,3 +31,6 @@
 [submodule "dot_files/vim/bundle/django"]
 	path = dot_files/vim/bundle/django
 	url = https://github.com/vim-scripts/django.vim.git
+[submodule "dot_files/vim/bundle/solarized"]
+	path = dot_files/vim/bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

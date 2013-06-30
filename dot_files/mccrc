@@ -1,4 +1,3 @@
 #!/bin/bash
 
 export MCC_SRC=$HOME/git/mcc
-alias mcc="cd $MCC_SRC"
