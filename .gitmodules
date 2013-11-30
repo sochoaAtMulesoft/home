@@ -1,36 +1,6 @@
 [submodule "dot_files/vim/bundle/pathogen"]
 	path = dot_files/vim/bundle/pathogen
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule "dot_files/vim/bundle/neocomplcache"]
-	path = dot_files/vim/bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache.git
-[submodule "dot_files/vim/bundle/nerdtree"]
-	path = dot_files/vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
-[submodule "dot_files/vim/bundle/togglemouse"]
-	path = dot_files/vim/bundle/togglemouse
-	url = git://github.com/seanochoa/vim-togglemouse.git
 [submodule "dot_files/vim/bundle/sudo"]
 	path = dot_files/vim/bundle/sudo
 	url = git://github.com/seanochoa/sudo.vim.git
-[submodule "downloads/astyle"]
-	path = downloads/astyle
-	url = git@github.com:seanochoa/astyle-mirror.git
-[submodule "dot_files/vim/bundle/tagbar"]
-	path = dot_files/vim/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar
-[submodule "dot_files/vim/bundle/tcomment"]
-	path = dot_files/vim/bundle/tcomment
-	url = https://github.com/vim-scripts/tComment.git
-[submodule "dot_files/vim/bundle/commandt"]
-	path = dot_files/vim/bundle/commandt
-	url = https://github.com/wincent/Command-T
-[submodule "dot_files/vim/bundle/ctrlp"]
-	path = dot_files/vim/bundle/ctrlp
-	url = https://github.com/kien/ctrlp.vim.git
-[submodule "dot_files/vim/bundle/django"]
-	path = dot_files/vim/bundle/django
-	url = https://github.com/vim-scripts/django.vim.git
-[submodule "dot_files/vim/bundle/solarized"]
-	path = dot_files/vim/bundle/solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
