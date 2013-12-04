@@ -18,7 +18,7 @@ Host dev
     User bitcycle
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
-Host target
+Host target testhost testhost32
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/HomeDir.id_rsa
 Host deploy

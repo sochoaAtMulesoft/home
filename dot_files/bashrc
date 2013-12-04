@@ -19,20 +19,27 @@ shopt -s cdspell
 set completion-ignore-case on
 
 PS1="\u@\h:\w \$ "
-source $HOME/git/home/scripts/git-prompt.sh
-# source $HOME/git/home/scripts/ps1.rc
 
 alias reload="source $HOME/.bashrc"
+alias rg='grep --color=always -I -n -i -r -H'
+function _fast_grep() {
+    set -x
+    find . -type f -print0 | \
+        xargs -0 \
+              -P $(grep -c ^processor /proc/cpuinfo) \
+              -n 40 \
+              grep --color=always -nEIH ${@}
+    set +x
+}
+alias r='_fast_grep'
 alias sudo="sudo "
 export LESS=-Ri
 
 # some more ls aliases
-
 function _tree() {
     \tree -C -I "\.*|*cache*|venv" "${@}" | less -R
 }
 
-alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -C'
@@ -57,3 +64,4 @@ alias ta="tmux attach -d -t"
 alias tn="cd $HOME; tmux new -s"
 alias tl="tmux ls 2>/dev/null || echo 'No sessions available'"
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
