@@ -4,3 +4,6 @@
 [submodule "dot_files/vim/bundle/sudo"]
 	path = dot_files/vim/bundle/sudo
 	url = git://github.com/seanochoa/sudo.vim.git
+[submodule "dot_files/vim/bundle/cucumber"]
+	path = dot_files/vim/bundle/cucumber
+	url = https://github.com/tpope/vim-cucumber.git
