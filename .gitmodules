@@ -10,3 +10,6 @@
 [submodule "dot_files/ssh"]
 	path = dot_files/ssh
 	url = git@bitbucket.org:bitcycle/keys.git
+[submodule "mcc"]
+	path = mcc
+	url = git@bitbucket.org:bitcycle/home.mcc.git
