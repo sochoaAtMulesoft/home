@@ -7,3 +7,6 @@
 [submodule "dot_files/vim/bundle/cucumber"]
 	path = dot_files/vim/bundle/cucumber
 	url = https://github.com/tpope/vim-cucumber.git
+[submodule "dot_files/ssh"]
+	path = dot_files/ssh
+	url = git@bitbucket.org:bitcycle/keys.git
