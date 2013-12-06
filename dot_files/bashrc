@@ -49,4 +49,4 @@ source "${script_dir}/find_large_directories.rc"
 
 source "${script_dir}/ps1.rc"
 
-source "${script_dir}/mcc/aliases.rc"
+source "${HOME}/git/home/mcc/aliases.rc"
