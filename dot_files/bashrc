@@ -44,7 +44,7 @@ script_dir="${HOME}/git/home/scripts"
 source "${script_dir}/reset_gemset.rc"
 source "${script_dir}/tree_with_color.rc"
 source "${script_dir}/custom_history.rc"
-source "${script_dir}/fast_grep.rc"
+source "${script_dir}/parallel_grep.rc"
 source "${script_dir}/find_large_directories.rc"
 
 source "${script_dir}/mcc/aliases.rc"
