@@ -1,0 +1,5 @@
+function _tree() {
+    \tree -C -I "\.*|*cache*|venv" "${@}" | less -R
+}
+alias tree="_tree"
+

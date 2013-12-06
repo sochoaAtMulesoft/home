@@ -1,0 +1,24 @@
+function _reset_gemset() {
+    local gemset=""
+    
+    [ -z "${1}" ] && gemset="$(rvm gemset list | grep '^=' | sed 's/^\=. //g' | sed 's/\s*$//g')" || gemset="${1}"
+    [[ "${gemset}" == "(default)" ]] && \
+        echo 'Must specific a named gemset!' && \
+        rvm gemset list && \
+        return
+    [[ "${gemset}" == "global" ]] && \
+        echo 'Cannot delete the global gemset' && \
+        rvm gemset list && \
+        return
+    read -p "Press [Enter] to delete and recreate ${gemset}..."
+    rvm gemset delete --force ${gemset}
+    rvm gemset use --create ${gemset}
+    working_dir="$(pwd)"
+    read -p "Press [Enter] to install the deployment tool gem(s) from the current git branch..."
+    cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment && rm pkg/*.gem -f && rake build && gem install pkg/*.gem && cd "${working_dir}"
+    read -p "Press [Enter] to install the deployment tool plugin gem(s) from the current git branch..."
+    cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment-plugins && sh install_all.sh && cd "${working_dir}"
+}
+
+alias reset_gemset="_reset_gemset"
+

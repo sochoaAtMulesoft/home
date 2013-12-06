@@ -7,11 +7,6 @@ export LC_ALL=en_US.UTF-8
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export HISTCONTROL="ignoredups,ignoreboth"
-export HISTTIMEFORMAT="%s "
-export HISTSIZE=1000
-shopt -s histappend
-
 # check the window size after each command and, if necessary, 
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -20,63 +15,18 @@ set completion-ignore-case on
 
 PS1="\u@\h:\w \$ "
 
-alias reload="source $HOME/.bashrc"
-alias rg='grep --color=always -I -n -i -r -H'
-function _fast_grep() {
-    set -x
-    find . -type f -print0 | \
-        xargs -0 \
-              -P $(grep -c ^processor /proc/cpuinfo) \
-              -n 40 \
-              grep --color=always -nEIH ${@}
-    set +x
-}
-alias r='_fast_grep'
-
-function _find_large_directories() {
-    sudo du -h --max-depth 1 "${1:-./*}" 2>/dev/null | sort --human-numeric-sort --reverse
-}
-alias find_large_directories='_find_large_directories'
-
-function _clean_all() {
-    for target in {testhost,testhost32}; do 
-        clean_target_itcm_node ${target}
-    done;
-}
-
-alias clean_all="_clean_all"
-
-function _deploy(){
-    clean_all
-    itcm-deploy-all -t $1
-    itcm-start-all -t $1
-    itcm-status -t $1
-}
-alias deploy="_deploy"
-
-
+alias reload_bashrc="source $HOME/.bashrc"
 alias sudo="sudo "
 export LESS=-Ri
 
 # some more ls aliases
-function _tree() {
-    \tree -C -I "\.*|*cache*|venv" "${@}" | less -R
-}
 
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -C'
 alias v='vim'
-alias t="_tree"
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
-
-if [[ -d "$HOME/perl5/perlbrew/etc" ]]; then
-    source ~/perl5/perlbrew/etc/bashrc
-    if [[ -d "$HOME/perl/bin" ]]; then
-        perlbrew switch perl-5.14.2
-    fi
-fi
 
 export VISUAL=$vim
 export EDITOR=$vim
@@ -89,26 +39,12 @@ alias tl="tmux ls 2>/dev/null || echo 'No sessions available'"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-function _reset_gemset() {
-    local gemset=""
-    
-    [ -z "${1}" ] && gemset="$(rvm gemset list | grep '^=' | sed 's/^\=. //g' | sed 's/\s*$//g')" || gemset="${1}"
-    [[ "${gemset}" == "(default)" ]] && \
-        echo 'Must specific a named gemset!' && \
-        rvm gemset list && \
-        return
-    [[ "${gemset}" == "global" ]] && \
-        echo 'Cannot delete the global gemset' && \
-        rvm gemset list && \
-        return
-    read -p "Press [Enter] to delete and recreate ${gemset}..."
-    rvm gemset delete --force ${gemset}
-    rvm gemset use --create ${gemset}
-    working_dir="$(pwd)"
-    read -p "Press [Enter] to install the deployment tool gem(s) from the current git branch..."
-    cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment && rm pkg/*.gem -f && rake build && gem install pkg/*.gem && cd "${working_dir}"
-    read -p "Press [Enter] to install the deployment tool plugin gem(s) from the current git branch..."
-    cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment-plugins && sh install_all.sh && cd "${working_dir}"
-}
+# custom scripts
+script_dir="${HOME}/git/home/scripts"
+source "${script_dir}/reset_gemset.rc"
+source "${script_dir}/tree_with_color.rc"
+source "${script_dir}/custom_history.rc"
+source "${script_dir}/fast_grep.rc"
+source "${script_dir}/find_large_directories.rc"
 
-alias reset_gemset="_reset_gemset"
+source "${script_dir}/mcc/aliases.rc"
