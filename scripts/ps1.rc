@@ -28,7 +28,7 @@ function prompt_command () {
     fi
 
     local _ruby=""
-    if [[ "$(which ruby)" != "/usr*" ]]; then 
+    if [[ "$(which ruby)" != /usr* ]]; then 
         _ruby="[rvm] "
     fi
 
