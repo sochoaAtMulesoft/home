@@ -1,3 +1,4 @@
+# vim: set ft=sh:
 
 export HISTCONTROL="ignoredups:erasedups,ignoreboth"   
 export HISTTIMEFORMAT="%s "                            
