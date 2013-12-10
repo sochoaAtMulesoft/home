@@ -44,7 +44,7 @@ alias rg='find $(pwd) -type f -print0 | xargs -0 -P 4 -n 40 grep --color=always 
 source "${script_dir}/find_large_directories.rc"
 
 source "${script_dir}/ps1.rc"
-source "${HOME}/git/home/dot_files/mcc/rc"
+# source "${HOME}/git/home/dot_files/mcc/rc"
 
 if [ -d "${HOME}/opt/bin" ] ; then 
     export PATH="${HOME}/opt/bin:${PATH}"
