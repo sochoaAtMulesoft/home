@@ -28,10 +28,6 @@ alias v='vim'
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
-export VISUAL=$vim
-export EDITOR=$vim
-export PSQL_EDITOR=$vim
-
 # tmux aliases
 alias ta="tmux attach -d -t"
 alias tn="cd $HOME; tmux new -s"
@@ -53,3 +49,9 @@ source "${HOME}/git/home/dot_files/mcc/rc"
 if [ -d "${HOME}/opt/bin" ] ; then 
     export PATH="${HOME}/opt/bin:${PATH}"
 fi
+
+vim=$(which vim)
+export VISUAL=$vim
+export EDITOR=$vim
+export PSQL_EDITOR=$vim
+

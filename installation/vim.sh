@@ -20,7 +20,9 @@ mkdir -p ~/opt
             --enable-rubyinterp \
             --enable-pythoninterp \
             --enable-cscope \
-            --prefix="${HOME}/opt" \
+            --enable-gui=no \
+            --without-x \
+            --prefix="${HOME}/opt"
             
 make -j$(nproc)
 
