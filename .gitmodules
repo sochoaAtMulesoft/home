@@ -13,3 +13,6 @@
 [submodule "mcc"]
 	path = mcc
 	url = git@bitbucket.org:bitcycle/home.mcc.git
+[submodule "dot_files/vim/bundle/vundle"]
+	path = dot_files/vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git
