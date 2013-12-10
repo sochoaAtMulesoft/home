@@ -113,6 +113,7 @@ set cursorline
 hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=gray guifg=white
 
 set laststatus=2
+filetype plugin on
 
 set hidden
 set switchbuf+=useopen
