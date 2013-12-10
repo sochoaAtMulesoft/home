@@ -27,31 +27,7 @@ function prompt_command () {
         TMUX="${LIGHT_YELLOW}(no tmux)${RESET}\n"
     fi
 
-    local _ruby=""
-    if [[ "$(which ruby)" != "/usr*" ]]; then 
-        _ruby="[rvm] "
-    fi
-
-    local git_ps1=""
-    if which git &>/dev/null ; then 
-        export GIT_PS1_SHOWDIRTYSTATE=1
-        if [ ! -f "${HOME}/.git-completion.bash" ] ; then 
-            for f in $(find /usr -name 'git-completion.bash' 2>/dev/null | head -n 1);  do
-                cp $f "${HOME}/.git-completion.bash"
-            done
-        fi 
-        if [ -f "${HOME}/.git-completion.bash" ] ; then 
-            source "${HOME}/.git-completion.bash"
-            local git_ps1="$(__git_ps1 '[git:%s]')"
-            if [[ "${git_ps1}" != "" ]]; then 
-                git_ps1+=" "
-            fi
-        fi
-    fi
-
     PS1="${rc}"
-    PS1+="${_ruby}"
-    PS1+="${git_ps1}"
     PS1+="[$(date +'%H:%M:%S')] "
     PS1+="${LIGHT_BLUE}\u${RESET}@${LIGHT_GREEN}\h${RESET}:\W"
     PS1+="${RESET}"
