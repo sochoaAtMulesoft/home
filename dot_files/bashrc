@@ -55,3 +55,4 @@ export VISUAL=$vim
 export EDITOR=$vim
 export PSQL_EDITOR=$vim
 
+eval `dircolors $HOME/git/home/etc/dircolors-solarized/dircolors.256dark`

@@ -12,7 +12,6 @@ set incsearch       "show us matches immediately
 syntax on
 
 set t_Co=256
-colorscheme railscasts
 
 " Misc stuff
 set nobackup
@@ -58,10 +57,10 @@ nmap <Leader>bk :bprev<cr>
 nmap <Leader>b :ls<cr>:b 
 nmap <Leader>bx :bd<cr>
 nmap <Leader>x :q<cr>
+nmap <Leader>t :Tabularize /
+
 nnoremap <Leader>q @q
 nmap <F5> :! !<cr>
-nnoremap <leader>t :TlistToggle<CR>
-nnoremap <leader>o :CommandT<CR>
 
 inoremap <Leader>s <Esc>:w<cr>
 inoremap JJ <Esc>
@@ -101,13 +100,6 @@ cmap w!! w !sudo tee % >/dev/null
 " Fold Tag
 nnoremap <leader>ft Vatzf
 
-
-""""""""""""""""""""""""""""""
-" => Statusline
-""""""""""""""""""""""""""""""
-set cursorline
-hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=gray guifg=white
-
 filetype plugin on
 
 set hidden
@@ -119,19 +111,7 @@ au InsertEnter * let updaterestore=&updatetime | set updatetime=4000
 au InsertLeave * let &updatetime=updaterestore
 au CursorHoldI * stopinsert
 
-augroup BgHighlight
-    autocmd!
-    autocmd WinEnter * set cul
-    autocmd WinLeave * set nocul
-augroup END
-
 if !has("gui_running") | let g:skip_loading_mswin = 1 | endif
-if has("gui_running") | colorscheme desert | endif
-
-let g:tagbar_usearrows = 1
-let g:tagbar_width = 50
-noremap <F4> :TagbarToggle<CR>
-noremap <leader>td <C-]>
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -139,8 +119,10 @@ Bundle 'gmarik/vundle'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-cucumber'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'bling/vim-airline'
 Bundle 'godlygeek/tabular'
 
 set rtp+=/usr/lib/python2.6/site-packages/powerline/bindings/vim/
@@ -148,7 +130,7 @@ set rtp+=/usr/lib/python2.6/site-packages/powerline/bindings/vim/
 " Always show statusline
 set laststatus=2
 
-let g:Powerline_mode_V="V·LINE"
-let g:Powerline_mode_cv="V·BLOCK"
-let g:Powerline_mode_S="S·LINE"
-let g:Powerline_mode_cs="S·BLOCK"
+" colorscheme railscasts
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
