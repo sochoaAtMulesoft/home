@@ -44,9 +44,11 @@ script_dir="${HOME}/git/home/scripts"
 source "${script_dir}/reset_gemset.rc"
 source "${script_dir}/tree_with_color.rc"
 source "${script_dir}/custom_history.rc"
-source "${script_dir}/parallel_grep.rc"
+alias rg='find $(pwd) -type f -print0 | xargs -0 -P 4 -n 40 grep --color=always -iH'
 source "${script_dir}/find_large_directories.rc"
 
 source "${script_dir}/ps1.rc"
 
 source "${HOME}/git/home/mcc/aliases.rc"
+source "${HOME}/git/home/mcc/rvm.rc"
+
