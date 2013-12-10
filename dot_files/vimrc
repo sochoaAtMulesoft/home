@@ -113,7 +113,6 @@ set cursorline
 hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=gray guifg=white
 
 set laststatus=2
-filetype plugin on
 
 set hidden
 set switchbuf+=useopen
@@ -137,3 +136,7 @@ let g:tagbar_usearrows = 1
 let g:tagbar_width = 50
 noremap <F4> :TagbarToggle<CR>
 noremap <leader>td <C-]>
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
