@@ -1,12 +1,3 @@
-[submodule "dot_files/vim/bundle/pathogen"]
-	path = dot_files/vim/bundle/pathogen
-	url = git://github.com/tpope/vim-pathogen.git
-[submodule "dot_files/vim/bundle/sudo"]
-	path = dot_files/vim/bundle/sudo
-	url = git://github.com/seanochoa/sudo.vim.git
-[submodule "dot_files/vim/bundle/cucumber"]
-	path = dot_files/vim/bundle/cucumber
-	url = https://github.com/tpope/vim-cucumber.git
 [submodule "dot_files/ssh"]
 	path = dot_files/ssh
 	url = git@bitbucket.org:bitcycle/keys.git
