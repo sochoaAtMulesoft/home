@@ -1,2 +1,2 @@
-bitcycle home dir
+home
 ====
