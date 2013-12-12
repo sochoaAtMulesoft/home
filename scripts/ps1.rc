@@ -1,7 +1,7 @@
 # vim: set ft=sh:
 
-bind '"\eOC":forward-word'
-bind '"\eOD":backward-word'
+# bind '"\eOC":forward-word'
+# bind '"\eOD":backward-word'
 
 function prompt_command () {
 

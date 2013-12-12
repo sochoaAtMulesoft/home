@@ -105,7 +105,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-
 " ===================
 " Vundle plugins list
 
@@ -113,12 +112,11 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-cucumber'
 Bundle 'scrooloose/syntastic'
-Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/powerline'
+" Bundle 'bling/vim-airline'
 Bundle 'godlygeek/tabular'
 
 " Always show statusline
 set laststatus=2
 
-let g:solarized_termcolors=16
-set background=dark
-colorscheme solarized
+set rtp+=/Library/Python/2.7/site-packages/powerline/bindings/vim

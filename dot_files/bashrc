@@ -9,8 +9,6 @@ export LC_ALL=en_US.UTF-8
 
 # check the window size after each command and, if necessary, 
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-shopt -s cdspell
 set completion-ignore-case on
 
 PS1="\u@\h:\w \$ "
@@ -55,4 +53,3 @@ export VISUAL=$vim
 export EDITOR=$vim
 export PSQL_EDITOR=$vim
 
-eval `dircolors $HOME/git/home/etc/dircolors-solarized/dircolors.256dark`

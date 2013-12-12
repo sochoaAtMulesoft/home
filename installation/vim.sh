@@ -2,8 +2,6 @@
 
 install_log="$(pwd)/install.log"
 
-sudo yum install mercurial
-
 if [ ! -d "vim/src" ]; then 
     hg clone https://vim.googlecode.com/hg/ vim
 else
