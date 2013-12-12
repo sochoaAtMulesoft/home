@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for item in $(\ls dot_files); do 
+  item="$(pwd)/dot_files/${item}"
+  dest="${HOME}/.$(basename "${item}")"
+  [ -e "${dest}" ] && mv "${dest}" "${dest}-archived_$(date +"%Y%m%d%H%M%S")"
+  ln -s "${item}" "${dest}"
+done

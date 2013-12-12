@@ -2,7 +2,7 @@
 
 export HISTCONTROL="ignoredups:erasedups,ignoreboth"   
 export HISTTIMEFORMAT="%s "                            
-shopt -s histappend                                    
+# shopt -s histappend                                    
                                                        
 function _custom_history(){                            
                                                        
