@@ -33,6 +33,7 @@
     ls = ls-files
     names = diff --name-only
 	show-upstream = !sh -c '\n\n    test -n \"$1\" || set -- HEAD\n    set -- \"$(git rev-parse --symbolic-full-name \"$1\")\"\n    git for-each-ref --format=\"%(upstream:short)\" \"$1\"\n\n\n' -
+    stash-diff = stash show -p
 
 [user]
 	name = Sean Ochoa

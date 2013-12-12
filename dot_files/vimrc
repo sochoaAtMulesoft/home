@@ -1,7 +1,11 @@
 set nocompatible
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
+
+filetype plugin on
+filetype plugin indent on 
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " Search settings
 set nohlsearch      "Don't highlight searches
@@ -54,7 +58,7 @@ nmap <Leader>bk :bprev<cr>
 nmap <Leader>b :ls<cr>:b 
 nmap <Leader>bx :bd<cr>
 nmap <Leader>x :q<cr>
-nmap <Leader>t :Tabularize /
+vmap <Leader>t :Tabularize /
 
 nnoremap <Leader>q @q
 nmap <F5> :! !<cr>
