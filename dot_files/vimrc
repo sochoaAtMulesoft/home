@@ -117,6 +117,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/powerline'
 " Bundle 'bling/vim-airline'
 Bundle 'godlygeek/tabular'
+Bundle 'ldx/vim-indentfinder'
 
 " Always show statusline
 set laststatus=2
@@ -144,3 +145,8 @@ function! HLNext (blinktime)
   call matchdelete(ring)
   redraw
 endfunction
+
+" Map semicolon to colon to get rid of the headache of 
+" hitting shift+semi-colon each time
+nnoremap ; :
+nnoremap : <nop>
