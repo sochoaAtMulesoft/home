@@ -105,5 +105,10 @@ export PSQL_EDITOR=$vim
 source /usr/lib/python2.6/site-packages/Powerline-beta-py2.6.egg/powerline/bindings/zsh/powerline.zsh
 
 rvm use ruby-1.9.2-p320 
-rvm gemset use mcc
+rvm gemset use redmine30445
 
+alias pgit="$(find ~/git/mcc -name pgit)"
+alias rg="grep -nrHI" 
+alias rtest="rspec -f d"
+
+unsetopt listambiguous
