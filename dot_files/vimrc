@@ -8,7 +8,6 @@ filetype plugin indent on
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " Search settings
-set nohlsearch      "Don't highlight searches
 set ignorecase      "for pattern matching
 set smartcase       "if I use uppercase, match case sensitive
 set incsearch       "show us matches immediately
@@ -112,7 +111,6 @@ Bundle 'gmarik/vundle'
 " ===================
 " Vundle plugins list
 
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-cucumber'
 Bundle 'scrooloose/syntastic'
@@ -123,4 +121,26 @@ Bundle 'godlygeek/tabular'
 " Always show statusline
 set laststatus=2
 
-set rtp+=/Library/Python/2.7/site-packages/powerline/bindings/vim
+set rtp+=/usr/lib/python2.6/site-packages/Powerline-beta-py2.6.egg/powerline/bindings/vim
+
+colorscheme railscasts
+
+set hls
+highlight Search cterm=NONE ctermfg=black ctermbg=yellow guibg=yellow guifg=black
+
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
+nnoremap <silent> n   n:call HLNext(1)<cr>
+nnoremap <silent> N   N:call HLNext(1)<cr>
+ 
+function! HLNext (blinktime)
+  let [bufnum, lnum, col, off] = getpos('.')
+  let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+  let target_pat = '\c\%#'.@/
+  let ring = matchadd('ErrorMsg', target_pat, 101)
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  call matchdelete(ring)
+  redraw
+endfunction

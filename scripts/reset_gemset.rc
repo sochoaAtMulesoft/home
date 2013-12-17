@@ -1,48 +1,51 @@
 # vim: set ft=sh:
 
 function _reset_gemset() {
-    local gemset=""
+  local gemset=""
+  local log_filepath="/tmp/reset_rvm_gemset.$(date +"%Y%m%d%H%M").log"
 
-    [ -z "${1}" ]                           && \
-        gemset="$(rvm gemset list | \
-                  grep '^=' | \
-                  sed 's/^\=. //g' | \
-                  sed 's/\s*$//g')"         || \
-        gemset="${1}"
+  [ -z "${1}" ]                           && \
+      gemset="$(rvm gemset list | \
+                grep '^=' | \
+                sed 's/^\=. //g' | \
+                sed 's/\s*$//g')"         || \
+      gemset="${1}"
 
-    [[ "${gemset}" == "(default)" ]] && \
-        echo 'Must specific a named gemset!' && \
-        rvm gemset list && \
-        return
-    [[ "${gemset}" == "global" ]] && \
-        echo 'Cannot delete the global gemset' && \
-        rvm gemset list && \
-        return
+  [[ "${gemset}" == "(default)" ]] && \
+      echo 'Must specific a named gemset!' && \
+      rvm gemset list && \
+      return
+  [[ "${gemset}" == "global" ]] && \
+      echo 'Cannot delete the global gemset' && \
+      rvm gemset list && \
+      return
 
-    read -p "Press [Enter] to delete and recreate ${gemset}..."
+  rvm gemset delete --force ${gemset}
+  rvm gemset use --create ${gemset}
 
-    rvm gemset delete --force ${gemset}
-    rvm gemset use --create ${gemset}
+  working_dir="$(pwd)"
 
-    working_dir="$(pwd)"
+  cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment
+  git_br="$(git rev-parse --abbrev-ref HEAD)"
+  echo "Installing the DT gem(s) from $git_br"
+  if ls pkg/*.gem &>/dev/null ; then 
+    rm pkg/*.gem -f &>/dev/null
+  fi
+  rake build &>>"${log_filepath}"
+  gem install pkg/*.gem &>>"${log_filepath}"
+  cd "${working_dir}"
 
-    read -t 1 -p "Press [Enter] to install the deployment tool gem(s) from the current git branch..."
-    cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment
-    rm pkg/*.gem -f
+  cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment-plugins
+  git_br="$(git rev-parse --abbrev-ref HEAD)"
+  echo "Installing the DT plugins from $git_br"
+  sh install_all.sh &>>"${log_filepath}"
+  cd "${working_dir}"
 
-    rake build
-    gem install pkg/*.gem
-    cd "${working_dir}"
-
-    read -t 1 -p "Press [Enter] to install the deployment tool plugin gem(s) from the current git branch..."
-    cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment-plugins
-    sh install_all.sh
-    cd "${working_dir}"
-
-    read -t 1 -p "Press [Enter] to install the deployment tool plugin gem(s) from the current git branch..."
-    cd ${MCC_SRC:-${HOME}/git/mcc}/itc-testing
-    rake install
-    cd "${working_dir}"
+  # cd ${MCC_SRC:-${HOME}/git/mcc}/itc-testing
+  # git_br="$(git rev-parse --abbrev-ref HEAD)"
+  # echo "Installing test harness from $git_br"
+  # rake install &>>"${log_filepath}"
+  cd "${working_dir}"
 }
 
 alias reset_gemset="_reset_gemset"

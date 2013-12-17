@@ -52,4 +52,5 @@ vim=$(which vim)
 export VISUAL=$vim
 export EDITOR=$vim
 export PSQL_EDITOR=$vim
+alias pgit="$(find ~/git/mcc -name pgit)"
 

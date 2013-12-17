@@ -9,4 +9,3 @@
 nosetests.xml
 coverage.xml
 .coverage
-install_all.sh
