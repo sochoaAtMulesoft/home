@@ -54,3 +54,5 @@ export EDITOR=$vim
 export PSQL_EDITOR=$vim
 alias pgit="$(find ~/git/mcc -name pgit)"
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
