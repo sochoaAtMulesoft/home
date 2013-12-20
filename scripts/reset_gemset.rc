@@ -2,7 +2,6 @@
 
 function _reset_gemset() {
   local gemset=""
-  local log_filepath="/tmp/reset_rvm_gemset.$(date +"%Y%m%d%H%M").log"
 
   [ -z "${1}" ]                           && \
       gemset="$(rvm gemset list | \
@@ -28,23 +27,21 @@ function _reset_gemset() {
   cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment
   git_br="$(git rev-parse --abbrev-ref HEAD)"
   echo "Installing the DT gem(s) from $git_br"
-  if ls pkg/*.gem &>/dev/null ; then 
-    rm pkg/*.gem -f &>/dev/null
-  fi
-  rake build &>>"${log_filepath}"
-  gem install pkg/*.gem &>>"${log_filepath}"
+  find -name '*.gem' -exec rm -f {} \;
+  rake build &>/dev/null
+  gem install pkg/*.gem &>/dev/null
   cd "${working_dir}"
 
   cd ${MCC_SRC:-${HOME}/git/mcc}/itc-deployment-tool/deployment-plugins
   git_br="$(git rev-parse --abbrev-ref HEAD)"
   echo "Installing the DT plugins from $git_br"
-  sh install_all.sh &>>"${log_filepath}"
+  sh install_all.sh &>/dev/null
   cd "${working_dir}"
 
-  # cd ${MCC_SRC:-${HOME}/git/mcc}/itc-testing
-  # git_br="$(git rev-parse --abbrev-ref HEAD)"
-  # echo "Installing test harness from $git_br"
-  # rake install &>>"${log_filepath}"
+  cd ${MCC_SRC:-${HOME}/git/mcc}/itc-testing
+  git_br="$(git rev-parse --abbrev-ref HEAD)"
+  echo "Installing test harness from $git_br"
+  rake install &>>"${log_filepath}"
   cd "${working_dir}"
 }
 
