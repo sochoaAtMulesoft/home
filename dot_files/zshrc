@@ -55,10 +55,7 @@ powerline="/Library/Python/2.7/site-packages/powerline"
 if [ -d "${powerline}" ]; then 
     powerline="${HOME}/git/powerline/powerline"
     powerline+="/bindings/zsh/powerline.zsh"
-    if [ -f "${powerline}" ] ; then
-        echo "Loading powerline:  ${powerline}"
-        source "${powerline}"
-    fi
+    [ -f "${powerline}" ] && source "${powerline}"
 fi
 
 alias rg="grep -nrHI" 
