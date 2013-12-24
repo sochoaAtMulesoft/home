@@ -11,9 +11,6 @@ plugins=(git rvm svn tmux yum history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-export PATH="/home/bitcycle/opt/bin:/home/bitcycle/.rvm/gems/ruby-1.9.2-p320/bin:/home/bitcycle/.rvm/gems/ruby-1.9.2-p320@global/bin:/home/bitcycle/.rvm/rubies/ruby-1.9.2-p320/bin:/home/bitcycle/.rvm/bin:/sbin:/bin:/usr/sbin:/usr/bin:/sbin:/usr/sbin:/home/bitcycle/bin"
-
 export EDITOR='vim'
 
 export TZ=America/Los_Angeles
@@ -54,13 +51,14 @@ export VISUAL=$vim
 export EDITOR=$vim
 export PSQL_EDITOR=$vim
 
-powerline="$HOME/git/powerline/powerline/bindings/zsh/powerline.zsh"
-if [ -f "${powerline}" ] ; then
-    echo "Loading powerline"
-    source "${powerline}"
-    clear
-else
-    echo "Powerline unavailable at ${powerline}"
+powerline="/Library/Python/2.7/site-packages/powerline"
+if [ -d "${powerline}" ]; then 
+    powerline="${HOME}/git/powerline/powerline"
+    powerline+="/bindings/zsh/powerline.zsh"
+    if [ -f "${powerline}" ] ; then
+        echo "Loading powerline:  ${powerline}"
+        source "${powerline}"
+    fi
 fi
 
 alias rg="grep -nrHI" 
