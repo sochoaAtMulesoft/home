@@ -2,7 +2,6 @@ set nocompatible
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set textwidth=80
 
 filetype plugin on
 filetype plugin indent on 
@@ -17,7 +16,9 @@ set incsearch       "show us matches immediately
 syntax on
 
 " Misc stuff
-set nobackup
+set backupdir=~/.vim/backup,/tmp
+set directory=~/.vim/backup,/tmp
+
 set showcmd                     "show commands in status line
 set confirm                     "Prompt on errors
 set title                       "Let VIM manage the term title

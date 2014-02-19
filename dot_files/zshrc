@@ -17,7 +17,7 @@ export TZ=America/Los_Angeles
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-alias sudo="sudo "
+alias sudo="nocorrect sudo"
 export LESS=-Ri
 
 alias ll='ls -l'
@@ -32,6 +32,7 @@ alias tl="tmux ls 2>/dev/null || echo 'No sessions available'"
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then 
   source "$HOME/.rvm/scripts/rvm"
+  rvm get stable --auto-dotfiles
 fi
 
 
@@ -45,6 +46,7 @@ fi
 if [ -d "${HOME}/opt/bin" ] ; then 
   export PATH="${HOME}/opt/bin:${PATH}"
 fi
+export PATH="/usr/local/sbin:${PATH}"
 
 vim=$(which vim)
 export VISUAL=$vim
@@ -63,3 +65,6 @@ alias rtest="rspec -f d"
 export MCC_SRC="${HOME}/git/mcc"
 
 unsetopt listambiguous
+
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
