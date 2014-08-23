@@ -2,10 +2,12 @@ set nocompatible
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set nu
 
 filetype plugin on
 filetype plugin indent on 
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype python setlocal ts=4 sts=4 sw=4
 
 " Search settings
 set ignorecase      "for pattern matching
@@ -16,8 +18,20 @@ set incsearch       "show us matches immediately
 syntax on
 
 " Misc stuff
-set backupdir=~/.vim/backup,/tmp
-set directory=~/.vim/backup,/tmp
+set noswapfile
+set nobackup
+
+set foldmethod=indent
+set foldlevel=2
+set foldnestmax=2
+inoremap <F10> <C-O>za
+nnoremap <F10> za
+onoremap <F10> <C-C>za
+vnoremap <F10> zf
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+au BufWinLeave ?* mkview 1
+au BufWinEnter ?* silent loadview 1
 
 set showcmd                     "show commands in status line
 set confirm                     "Prompt on errors
@@ -50,15 +64,15 @@ nmap <Leader>e :e ~/.vimrc<cr>
 nmap <Leader>p\| :vsp<cr>
 nmap <Leader>p_ :sp<cr>
 nmap <Leader>s :update<cr>
-nmap <Leader>w<Right> <c-w><Right>
-nmap <Leader>w<Left> <c-w><Left>
-nmap <Leader>w<Down> <c-w><Down>
-nmap <Leader>w<Up> <c-w><Up>
-nmap <Leader>bj :bnext<cr>
-nmap <Leader>bk :bprev<cr>
-nmap <Leader>b :ls<cr>:b 
-nmap <Leader>bx :bd<cr>
-nmap <Leader>x :q<cr>
+nmap <F9> :TagbarToggle<CR> 
+nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>m :CtrlPMixed<CR>
+nmap <Leader>o :CtrlP<CR>
+
+
+let g:tagbar_width = 60
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 vmap <Leader>t :Tabularize /
 
 nnoremap <Leader>q @q
@@ -113,40 +127,35 @@ Bundle 'gmarik/vundle'
 " ===================
 " Vundle plugins list
 
-Bundle 'Valloric/YouCompleteMe'
+set encoding=utf-8
 Bundle 'tpope/vim-cucumber'
 Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/powerline'
-" Bundle 'bling/vim-airline'
 Bundle 'godlygeek/tabular'
 Bundle 'ldx/vim-indentfinder'
+Bundle 'majutsushi/tagbar'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+" Bundle 'suxpert/vimcaps'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/Conque-Shell'
 
 " Always show statusline
 set laststatus=2
-
-set rtp+=/usr/lib/python2.6/site-packages/Powerline-beta-py2.6.egg/powerline/bindings/vim
 
 colorscheme railscasts
 
 set hls
 highlight Search cterm=NONE ctermfg=black ctermbg=yellow guibg=yellow guifg=black
 
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
 
-nnoremap <silent> n   n:call HLNext(1)<cr>
-nnoremap <silent> N   N:call HLNext(1)<cr>
- 
-function! HLNext (blinktime)
-  let [bufnum, lnum, col, off] = getpos('.')
-  let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-  let target_pat = '\c\%#'.@/
-  let ring = matchadd('ErrorMsg', target_pat, 101)
-  redraw
-  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-  call matchdelete(ring)
-  redraw
-endfunction
+au BufNewFile,BufRead *.feature set filetype=cucumber
 
-" Map semicolon to colon to get rid of the headache of 
-" hitting shift+semi-colon each time
+
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+
+" Gray background with black foreground
+highlight Pmenu ctermbg=59 ctermfg=16
+
+
