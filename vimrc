@@ -19,6 +19,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 map <F5> :NERDTreeToggle<CR>
 
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
 let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 map <leader>o  :Files<CR>

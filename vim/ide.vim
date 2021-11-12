@@ -38,6 +38,7 @@ Plugin 'fatih/vim-go'
 " Python
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
+let g:flake8_show_in_gutter = 1
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4       |
@@ -47,3 +48,4 @@ au BufNewFile,BufRead *.py
     \ set expandtab       |
     \ set autoindent      |
     \ set fileformat=unix |
+    \ let python_highlight_all = 1

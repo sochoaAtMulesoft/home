@@ -1,13 +1,13 @@
 # Path to your oh-my-zsh configuration.
 
 echo "Sourcing env.sh"
-source env.sh
+source ~/env.sh
 
 echo "Sourcing alias.sh"
-source alias.sh
+source ~/alias.sh
 
 echo "Sourcing path.sh"
-source path.sh
+source ~/path.sh
 
 # zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 # dirhistory: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory
@@ -24,3 +24,4 @@ fi
 setopt histignorespace
 setopt share_history
 unsetopt listambiguous
+eval "$(pyenv init -)"
