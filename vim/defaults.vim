@@ -22,3 +22,8 @@ set signcolumn=yes
 set hidden
 
 set hlsearch
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+autocmd BufWritePre *.vim retab
