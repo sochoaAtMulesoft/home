@@ -1,9 +1,5 @@
 source ~/.vim/win_view.vim
 
-function! Retab()
-
-endfunction
-
 function! CleanupEmptyLines()
   call SaveWinView()
   %s/\s\+$//e
