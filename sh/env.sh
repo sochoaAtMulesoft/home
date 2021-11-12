@@ -14,3 +14,7 @@ if [ -e $HOME/.oh-my-zsh ]; then
 fi
 
 export HISTFILE="$HOME/.${USER}_zsh_history"
+
+if [ -e "$HOME/.pyenv" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+fi

@@ -24,4 +24,5 @@ fi
 setopt histignorespace
 setopt share_history
 unsetopt listambiguous
+
 eval "$(pyenv init -)"
