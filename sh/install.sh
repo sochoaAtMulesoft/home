@@ -14,7 +14,7 @@ link_file() {
 for f in vim/* ; do b="$(basename $f)"; ( pushd vim &>/dev/null; link_file "$b" "$HOME/.vim" ); done;
 
 # *.sh => ~/
-for f in *.sh ; do b="$(basename $f)"; ( link_file "$b" "$HOME" ); done;
+for f in sh/*.sh ; do echo $f | grep -iq "install" && continue; b="$(basename $f)"; ( pushd sh &>/dev/null; link_file "$b" "$HOME" ); done;
 
 if [[ $SHELL == */zsh ]]; then
   if [[ -f ~/.zshrc ]] && [[ ! -L ~/.zshrc ]]; then
