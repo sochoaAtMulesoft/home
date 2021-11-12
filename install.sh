@@ -5,16 +5,21 @@ test -z "$DEBUG" || set -x
 
 link_file() {
   local _FILE="$1"
-  mkdir -p ~/.vim
-  pushd vim &>/dev/null                      \
-    && echo "$(pwd)/$_FILE => ~/.vim/$_FILE" \
-    && ln -s -f "$(pwd)/$_FILE" ~/.vim/      \
-    && popd &>/dev/null
+  local _TO_DIR="$2"
+  echo "$(pwd)/$_FILE => ${_TO_DIR}/$_FILE"
+  ln -s -f "$(pwd)/$_FILE" "${_TO_DIR}"
 }
 
-for f in vim/* ; do 
-  b="$(basename $f)"; 
-  ( link_file "$b" ); 
-done;
+# vim/* => ~/.vim/
+for f in vim/* ; do b="$(basename $f)"; ( pushd vim &>/dev/null; link_file "$b" "$HOME/.vim" ); done;
 
-test -z "$DEBUG" || set +x
+# *.sh => ~/
+for f in *.sh ; do b="$(basename $f)"; ( link_file "$b" "$HOME" ); done;
+
+if [[ $SHELL == */zsh ]]; then
+  if [[ -f ~/.zshrc ]] && [[ ! -L ~/.zshrc ]]; then
+    echo "Backing up ~/.zshrc"
+    mv ~/.zshrc ~/.zshrc.bak-$(date +"%Y%m%d%H%M%S")
+  fi
+  ln -sf $(pwd)/zshrc ~/.zshrc
+fi

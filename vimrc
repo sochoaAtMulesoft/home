@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 source ~/.vim/ide.vim " has plugins, so sourcing it here
 
+Plugin 'vim-scripts/Rename2'
 Plugin 'itchyny/lightline.vim'
 Plugin 'flazz/vim-colorschemes'
 
@@ -35,7 +36,7 @@ syntax on
 " Automatically exit insert mode
 au InsertEnter * let updaterestore=&updatetime | set updatetime=4000
 au InsertLeave * let &updatetime=updaterestore
-au CursorHoldI * stopinsert
+au CursorHold,CursorHoldI * stopinsert
 
 highlight Search cterm=NONE ctermfg=black ctermbg=yellow guibg=yellow guifg=black
 set ts=2 sw=2 et
