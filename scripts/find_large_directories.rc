@@ -1,9 +1,0 @@
-
-function _find_large_directories() {                  
-    sudo du --human-readable        \                 
-            --max-depth 1           \                 
-            "${1:-./*}"  2>/dev/null        | \       
-        sort --human-numeric-sort             \       
-             --reverse                                
-}                                                     
-alias find_large_directories='_find_large_directories'
