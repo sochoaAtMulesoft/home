@@ -1,4 +1,5 @@
 function! CleanupEmptyLines()
+  %s/\s\+$//e
   %!awk 'NF {p=1} p' | tac | awk 'NF {p=1} p' | tac
 endfunction
 
