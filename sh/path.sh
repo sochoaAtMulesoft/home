@@ -10,3 +10,7 @@ fi
 if [ ! -z "$PYENV_ROOT" ]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
 fi
+
+if pyenv prefix &>/dev/null && [ -f "$(pyenv prefix)/bin" ]; then
+  export PATH="$(pyenv prefix)/bin"
+fi
