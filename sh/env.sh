@@ -19,6 +19,5 @@ if [ -e "$HOME/.pyenv" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
 fi
 
-
-# Salesforce
 export KUBEVERSION=v1.17.5
+export NVM_DIR="$HOME/.nvm"
